@@ -26,9 +26,10 @@ myFavoriteFlavors.delete('strawberry');
 // required set
 console.log(myFavoriteFlavors);*/
 
+/*
 //11- Quiz: Working With WeakSets
 
-/*
+/!*
  * Programming Quiz: Using Sets (3-2)
  *
  * Create the following variables:
@@ -38,7 +39,7 @@ console.log(myFavoriteFlavors);*/
  *
  * Use the `.add()` method to add the objects `flavor1` and `flavor2` to `uniqueFlavors`
  * Use the `.add()` method to add the `flavor1` object (again!) to the `uniqueFlavors` set
- */
+ *!/
 // create uniqueFlavors and set it to a new WeakSet object
 const uniqueFlavors =new WeakSet();
 
@@ -52,6 +53,25 @@ uniqueFlavors.add(flavor2)
 console.log(uniqueFlavors)//test data before add flavor 1 again
 uniqueFlavors.add(flavor1)
 console.log(uniqueFlavors)//test data after add flavor 1 again
+*/
 
+//13- Creating & Modifying Maps
+const employees = new Map();
+//The .set() method takes two arguments. The first argument is the key, which is used to reference the second argument, the value.
+employees.set('james.parkes@udacity.com', {
+    firstName: 'James',
+    lastName: 'Parkes',
+    role: 'Content Developer'
+});
+employees.set('julia@udacity.com', {
+    firstName: 'Julia',
+    lastName: 'Van Cleve',
+    role: 'Content Developer'
+});
+employees.set('richard@udacity.com', {
+    firstName: 'Richard',
+    lastName: 'Kalehoff',
+    role: 'Content Developer'
+});
 
-
+console.log(employees);
