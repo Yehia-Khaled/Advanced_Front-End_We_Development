@@ -104,3 +104,15 @@ members.forEach((value, key) => console.log(key, value));
 
 //Notice how with the help of an arrow function, the forEach loop reads fairly straightforward. For each value and key in members, log the value and key to the console.
 */
+
+//16- WeakMaps
+const book1 = { title: 'Pride and Prejudice', author: 'Jane Austen' };
+const book2 = { title: 'The Catcher in the Rye', author: 'J.D. Salinger' };
+const book3 = { title: 'Gulliver’s Travels', author: 'Jonathan Swift' };
+
+const library = new WeakMap();
+library.set(book1, true);
+library.set(book2, false);
+library.set(book3, true);
+
+console.log(library);
