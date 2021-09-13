@@ -54,6 +54,7 @@ console.log(uniqueFlavors)//test data before add flavor 1 again
 uniqueFlavors.add(flavor1)
 console.log(uniqueFlavors)//test data after add flavor 1 again
 */
+/*
 
 //13- Creating & Modifying Maps
 const employees = new Map();
@@ -74,4 +75,32 @@ employees.set('richard@udacity.com', {
     role: 'Content Developer'
 });
 
-console.log(employees);
+console.log(employees);*/
+/*
+
+//15- Looping Through Maps
+    //2. Using a for...of Loop
+/!*
+ * //Fixme Using array destructuring, fix the following code to print the keys and values of the `members` Map to the console.
+ *!/
+
+const members = new Map();
+
+members.set('Evelyn', 75.68);
+members.set('Liam', 20.16);
+members.set('Sophia', 0);
+members.set('Marcus', 10.25);
+
+// for (const member of members) {
+//     let key=member.key;
+//     let value =member.values()
+//      console.log(key, value);
+//
+// }
+//3. Using a forEach Loop
+//Your last option for looping through a Map is with the .forEach() method.
+
+members.forEach((value, key) => console.log(key, value));
+
+//Notice how with the help of an arrow function, the forEach loop reads fairly straightforward. For each value and key in members, log the value and key to the console.
+*/
