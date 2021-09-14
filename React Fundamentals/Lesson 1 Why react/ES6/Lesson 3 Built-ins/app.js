@@ -117,6 +117,7 @@ library.set(book2, false);
 library.set(book3, true);
 
 console.log(library);*/
+/*
 
 //21- Proxies
     //1-Get Trap
@@ -140,4 +141,4 @@ console.log(library);*/
         }
     };
     const agent = new Proxy(richard, handler);
-    agent.status; // (1)logs the richard object, (2)logs the property being accessed, (3)returns the text in richard.status
+    agent.status; // (1)logs the richard object, (2)logs the property being accessed, (3)returns the text in richard.status*/
