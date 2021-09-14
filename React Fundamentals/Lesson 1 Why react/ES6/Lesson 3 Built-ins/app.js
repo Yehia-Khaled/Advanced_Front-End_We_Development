@@ -104,6 +104,7 @@ members.forEach((value, key) => console.log(key, value));
 
 //Notice how with the help of an arrow function, the forEach loop reads fairly straightforward. For each value and key in members, log the value and key to the console.
 */
+/*
 
 //16- WeakMaps
 const book1 = { title: 'Pride and Prejudice', author: 'Jane Austen' };
@@ -115,4 +116,28 @@ library.set(book1, true);
 library.set(book2, false);
 library.set(book3, true);
 
-console.log(library);
+console.log(library);*/
+
+//21- Proxies
+    //1-Get Trap
+    // const richard = {status: 'looking for work'};
+    // const handler = {
+    //     get(target, propName) {
+    //         console.log(target); // the `richard` object, not `handler` and not `agent`
+    //         console.log(propName); // the name of the property the proxy (`agent` in this case) is checking
+    //     }
+    // };
+    // const agent = new Proxy(richard, handler);
+    // agent.status; // logs out the richard object (not the agent object!) and the name of the property being accessed (`status`)
+
+    //2-Accessing the Target object from inside the proxy
+    const richard = {status: 'looking for work'};
+    const handler = {
+        get(target, propName) {
+            console.log(target);
+            console.log(propName);
+            return target[propName];
+        }
+    };
+    const agent = new Proxy(richard, handler);
+    agent.status; // (1)logs the richard object, (2)logs the property being accessed, (3)returns the text in richard.status
