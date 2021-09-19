@@ -36,6 +36,13 @@ class App extends Component {
                 }, {
                     name: 'Amany'
                 }]}/>
+                <ContactList contacts={[            {
+                    name: 'Abdulrahman'
+                }, {
+                    name: 'Aya'
+                }, {
+                    name: 'Mena'
+                }]}/>
             </div>
         )
     }
