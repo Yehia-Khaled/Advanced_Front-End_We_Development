@@ -3,15 +3,8 @@ import React, {Component} from 'react';
 
 class ContactList extends React.Component {
     render() {
-        const people = [
-            {
-                name: 'Yehia'
-            }, {
-                name: 'Mona'
-            }, {
-                name: 'Merna'
-            }
-        ]
+        const people = this.props.contacts
+
         return <ol>
 
             {people.map((person) => (
@@ -26,13 +19,24 @@ class ContactList extends React.Component {
 
 class App extends Component {
     render() {
-
-
-
-
         return (
             <div className="App">
-                <h1> Hello World </h1></div>
+                <h1> Hello World </h1>
+                <ContactList contacts={[            {
+                    name: 'Yehia'
+                }, {
+                    name: 'Mona'
+                }, {
+                    name: 'Merna'
+                }]}/>
+                <ContactList contacts={[            {
+                    name: 'Ahmed'
+                }, {
+                    name: 'Amona'
+                }, {
+                    name: 'Amany'
+                }]}/>
+            </div>
         )
     }
 }
