@@ -2,5 +2,8 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React Fundamentals/Lesson 3 State Management/Contacts Project/reactnd-contacts-complete" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React Fundamentals/Lesson 3 State Management/Contacts Project/reactnd-contacts-server2" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/React Fundamentals/Lesson 3 State Management/Exercises-FWD-Advanced-Track" vcs="Git" />
   </component>
 </project>
