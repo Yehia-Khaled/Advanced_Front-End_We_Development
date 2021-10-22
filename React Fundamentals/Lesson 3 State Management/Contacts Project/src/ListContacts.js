@@ -5,26 +5,26 @@ import escapeRegExp from 'escape-string-regexp'
 import sortBy from 'sort-by'
 
 class ListContacts extends Component {
-  // static propTypes = {
-  //   contacts: PropTypes.array.isRequired,
-  //   // onDeleteContact: PropTypes.func.isRequired
-  // }
-  // state = {
-  //   query: ''
-  // }
+  static propTypes = {
+    contacts: PropTypes.array.isRequired,
+    onDelete: PropTypes.func.isRequired
+  }
+  state = {
+    query: ''
+  }
+
+  updateQuery = (query) => {
+    this.setState({ query: query.trim() })
+  }
   //
-  // updateQuery = (query) => {
-  //   this.setState({ query: query.trim() })
-  // }
-  //
-  // clearQuery = () => {
-  //   this.setState({ query: '' })
-  // }
+  clearQuery = () => {
+    this.setState({ query: '' })
+  }
   //
   render() {
     // console.log('Props',this.props)
-    // const { contacts, onDeleteContact } = this.props
-    // const { query } = this.state
+    const { contacts, onDelete } = this.props
+    const { query } = this.state
     //
     // let showingContacts
     // if (query) {
@@ -35,29 +35,35 @@ class ListContacts extends Component {
     // }
     //
     // showingContacts.sort(sortBy('name'))
-    //
+    const showingContacts=query===''?
+      contacts:
+      contacts.filter((object)=>(
+        object.name.toLowerCase().includes(query.toLowerCase())
+      ))
+
     return (
       <div className='list-contacts'>
-        {/*  <div className='list-contacts-top'>*/}
-        {/* <input*/}
-        {/*    className='search-contacts'*/}
-        {/*    type='text'*/}
-        {/*    placeholder='Search contacts'*/}
-        {/*    value={query}*/}
-        {/*    onChange={(event) => this.updateQuery(event.target.value)}*/}
-        {/*  />*/}
+          {/*{JSON.stringify(this.state)}*/}
+          <div className='list-contacts-top'>
+         <input
+            className='search-contacts'
+            type='text'
+            placeholder='Search contacts'
+            value={ query}
+            onChange={(event) => this.updateQuery(event.target.value)}
+          />
         {/*  <Link*/}
         {/*    to='/create'*/}
         {/*    className='add-contact'*/}
         {/*  >Add Contact</Link>*/}
-        {/*</div>*/}
+        </div>
 
-        {/*{showingContacts.length !== contacts.length && (*/}
-        {/*  <div className='showing-contacts'>*/}
-        {/*    <span>Now showing {showingContacts.length} of {contacts.length} total</span>*/}
-        {/*    <button onClick={this.clearQuery}>Show all</button>*/}
-        {/*  </div>*/}
-        {/*)}*/}
+        {showingContacts.length !== contacts.length && (
+          <div className='showing-contacts'>
+            <span>Now showing {showingContacts.length} of {contacts.length} total</span>
+            <button onClick={this.clearQuery}>Show all</button>
+          </div>
+        )}
 
         {/*<ol className='contact-list'>*/}
         {/*  {showingContacts.map((contact) => (*/}
@@ -76,7 +82,7 @@ class ListContacts extends Component {
         {/*  ))}*/}
         {/*</ol>*/}
         <ol className='contact-list'>
-          {this.props.contacts.map((contact) =>(
+          { showingContacts.map((contact) =>(
             <li key={contact.id} className={'contact-list-item'}>
               <div
                 className={'contact-avatar'}
@@ -90,7 +96,7 @@ class ListContacts extends Component {
                 <p> {contact.handle}</p>
               </div>
               <button
-                onClick={()=>this.props.onDelete(contact)}
+                onClick={()=> onDelete(contact)}
                 className='contact-remove'>
                 Remove
               </button>
