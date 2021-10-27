@@ -27,7 +27,8 @@ const contacts = [
 
 class App extends Component {
   state = {
-    contacts: []
+    contacts: [],
+    screen:'list'
     /*contacts : [
       {
         "id": "karen",
@@ -59,21 +60,13 @@ class App extends Component {
       contacts: state.contacts.filter((c) => c.id !== contact.id)
     }))
 
-    // ContactsAPI.remove(contact)
-  }
-
-  createContact(contact) {
-    ContactsAPI.create(contact).then(contact => {
-      this.setState(state => ({
-        contacts: state.contacts.concat([ contact ])
-      }))
-    })
+    ContactsAPI.remove(contact)
   }
 
   render() {
     return (
       <div>
-{/*        <Route exact path='/' render={() => (
+        {/*        <Route exact path='/' render={() => (
           <ListContacts
             onDeleteContact={this.removeContact}
             contacts={this.state.contacts}
@@ -87,11 +80,27 @@ class App extends Component {
             }}
           />
         )}/>*/}
-        <ListContacts
+        {this.state.screen==='list'&& (<ListContacts
           contacts={this.state.contacts}
-          onDelete={this.removeContact}/>
+          onDelete={this.removeContact}
+          onNavigate={()=>(
+            this.setState(()=>({screen:'create'})
+            ))}
+        />)}
+        {this.state.screen==='create'&& (
+          <CreateContact />
+        )}
+
       </div>
-    )
+  )
+  }
+
+  createContact(contact) {
+    ContactsAPI.create(contact).then(contact => {
+      this.setState(state => ({
+        contacts: state.contacts.concat([ contact ])
+      }))
+    })
   }
 }
 
