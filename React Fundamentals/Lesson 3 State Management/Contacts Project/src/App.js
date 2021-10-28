@@ -28,7 +28,6 @@ const contacts = [
 class App extends Component {
   state = {
     contacts: [],
-    screen:'list'
     /*contacts : [
       {
         "id": "karen",
@@ -80,17 +79,25 @@ class App extends Component {
             }}
           />
         )}/>*/}
-        {this.state.screen==='list'&& (<ListContacts
-          contacts={this.state.contacts}
-          onDelete={this.removeContact}
-          onNavigate={()=>(
-            this.setState(()=>({screen:'create'})
-            ))}
-        />)}
-        {this.state.screen==='create'&& (
-          <CreateContact />
-        )}
-
+        <Route exact path='/' render={()=>(
+          <ListContacts
+            contacts={this.state.contacts}
+            onDelete={this.removeContact}
+          />
+        )}/>
+          {/*{this.state.screen==='list'&& ()}*/}
+        {/*{this.state.screen==='create'&& (*/}
+        {/*  <CreateContact />*/}
+        {/*)}*/}
+        {/*<Route path='/create' component={CreateContact}/>*/}
+        <Route path='/create' render={({ history }) => (
+          <CreateContact
+            onCreateContact={(contact) => {
+              this.createContact(contact)
+              history.push('/')
+            }}
+          />
+        )}/>
       </div>
   )
   }

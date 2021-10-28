@@ -7,6 +7,7 @@ class CreateContact extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const values = serializeForm(e.target, { hash: true })
+    console.log('values',values)
     if (this.props.onCreateContact)
       this.props.onCreateContact(values)
   }
@@ -14,20 +15,20 @@ class CreateContact extends Component {
   render() {
     return (
       <div>
-        <div>Create Contact</div>
-        {/*<Link className='close-create-contact' to='/'>Close</Link>*/}
-        {/*<form onSubmit={this.handleSubmit} className='create-contact-form'>*/}
-        {/*  <ImageInput*/}
-        {/*    className='create-contact-avatar-input'*/}
-        {/*    name='avatarURL'*/}
-        {/*    maxHeight={64}*/}
-        {/*  />*/}
-        {/*  <div className='create-contact-details'>*/}
-        {/*    <input type='text' name='name' placeholder='Name'/>*/}
-        {/*    <input type='text' name='email' placeholder='Email'/>*/}
-        {/*    <button>Add Contact</button>*/}
-        {/*  </div>*/}
-        {/*</form>*/}
+        {/*<div>Create Contact</div>*/}
+        <Link className='close-create-contact' to='/'>Close</Link>
+        <form onSubmit={this.handleSubmit} className='create-contact-form'>
+          <ImageInput
+            className='create-contact-avatar-input'
+            name='avatarURL'
+            maxHeight={64}
+          />
+          <div className='create-contact-details'>
+            <input type='text' name='name' placeholder='Name'/>
+            <input type='text' name='handle' placeholder='Handle'/>
+            <button>Add Contact</button>
+          </div>
+        </form>
       </div>
     )
   }
